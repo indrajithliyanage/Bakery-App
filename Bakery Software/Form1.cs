@@ -56,5 +56,31 @@ namespace Bakery_Software
                 }
             }
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex != 0)
+            {
+                var item = itemList.FirstOrDefault(i => i.ItemName == comboBox1.SelectedItem.ToString());
+                if (item != null)
+                {
+                    numericUpDown1.Value = item.ItemPrice;
+                }
+            }
+            else
+            {
+                numericUpDown1.Value = 0.00M;
+                numericUpDown2.Value = 0.00M;
+                numericUpDown3.Value = 0.00M;
+            }
+        }
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDown1.Value != 0.00M && numericUpDown2.Value != 0)
+            {
+                numericUpDown3.Value = numericUpDown1.Value * numericUpDown2.Value;
+            }
+        }
     }
 }
