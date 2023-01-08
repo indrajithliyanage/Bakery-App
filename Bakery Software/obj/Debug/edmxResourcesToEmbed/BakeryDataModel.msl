@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BakeryDBModelStoreContainer" CdmEntityContainer="BakeryDBEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="BakeryDBModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryType" ColumnName="CategoryType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Invoices">
+      <EntityTypeMapping TypeName="BakeryDBModel.Invoice">
+        <MappingFragment StoreEntitySet="Invoice">
+          <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+          <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+          <ScalarProperty Name="Sub_Total" ColumnName="Sub_Total" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Net_Amount" ColumnName="Net_Amount" />
+          <ScalarProperty Name="Paid_Amount" ColumnName="Paid_Amount" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvoiceItems">
+      <EntityTypeMapping TypeName="BakeryDBModel.InvoiceItem">
+        <MappingFragment StoreEntitySet="InvoiceItems">
+          <ScalarProperty Name="InvoiceItemsID" ColumnName="InvoiceItemsID" />
+          <ScalarProperty Name="InvoiceID_FK" ColumnName="InvoiceID_FK" />
+          <ScalarProperty Name="ItemID_FK" ColumnName="ItemID_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="BakeryDBModel.Item">
+        <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
+          <ScalarProperty Name="CategoryID_FK" ColumnName="CategoryID_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="PopulateItems" FunctionName="BakeryDBModel.Store.PopulateItems">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BakeryDBModel.PopulateItems_Result">
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
+          <ScalarProperty Name="CategoryID_FK" ColumnName="CategoryID_FK" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

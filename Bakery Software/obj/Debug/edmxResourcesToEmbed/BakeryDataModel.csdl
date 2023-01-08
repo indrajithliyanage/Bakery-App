@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BakeryDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Items" Relationship="Self.FK__Item__CategoryID__3B75D760" FromRole="Category" ToRole="Item" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="InvoiceID" />
+    </Key>
+    <Property Name="InvoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Sub_Total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Discount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Net_Amount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Paid_Amount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Balance" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <NavigationProperty Name="InvoiceItems" Relationship="Self.FK__InvoiceIt__Invoi__3E52440B" FromRole="Invoice" ToRole="InvoiceItems" />
+  </EntityType>
+  <EntityType Name="InvoiceItem">
+    <Key>
+      <PropertyRef Name="InvoiceItemsID" />
+    </Key>
+    <Property Name="InvoiceItemsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InvoiceID_FK" Type="Int32" />
+    <Property Name="ItemID_FK" Type="Int32" />
+    <NavigationProperty Name="Invoice" Relationship="Self.FK__InvoiceIt__Invoi__3E52440B" FromRole="InvoiceItems" ToRole="Invoice" />
+    <NavigationProperty Name="Item" Relationship="Self.FK__InvoiceIt__ItemI__3F466844" FromRole="InvoiceItems" ToRole="Item" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ItemID" />
+    </Key>
+    <Property Name="ItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ItemPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="CategoryID_FK" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__Item__CategoryID__3B75D760" FromRole="Item" ToRole="Category" />
+    <NavigationProperty Name="InvoiceItems" Relationship="Self.FK__InvoiceIt__ItemI__3F466844" FromRole="Item" ToRole="InvoiceItems" />
+  </EntityType>
+  <Association Name="FK__Item__CategoryID__3B75D760">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Item" Type="Self.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="CategoryID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__InvoiceIt__Invoi__3E52440B">
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="0..1" />
+    <End Role="InvoiceItems" Type="Self.InvoiceItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoice">
+        <PropertyRef Name="InvoiceID" />
+      </Principal>
+      <Dependent Role="InvoiceItems">
+        <PropertyRef Name="InvoiceID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__InvoiceIt__ItemI__3F466844">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="InvoiceItems" Type="Self.InvoiceItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="InvoiceItems">
+        <PropertyRef Name="ItemID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BakeryDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Invoices" EntityType="Self.Invoice" />
+    <EntitySet Name="InvoiceItems" EntityType="Self.InvoiceItem" />
+    <EntitySet Name="Items" EntityType="Self.Item" />
+    <AssociationSet Name="FK__Item__CategoryID__3B75D760" Association="Self.FK__Item__CategoryID__3B75D760">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Item" EntitySet="Items" />
+    </AssociationSet>
+    <AssociationSet Name="FK__InvoiceIt__Invoi__3E52440B" Association="Self.FK__InvoiceIt__Invoi__3E52440B">
+      <End Role="Invoice" EntitySet="Invoices" />
+      <End Role="InvoiceItems" EntitySet="InvoiceItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK__InvoiceIt__ItemI__3F466844" Association="Self.FK__InvoiceIt__ItemI__3F466844">
+      <End Role="Item" EntitySet="Items" />
+      <End Role="InvoiceItems" EntitySet="InvoiceItems" />
+    </AssociationSet>
+    <FunctionImport Name="PopulateItems" ReturnType="Collection(BakeryDBModel.PopulateItems_Result)">
+      <Parameter Name="CategoryID" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="PopulateItems_Result">
+    <Property Type="Int32" Name="ItemID" Nullable="false" />
+    <Property Type="String" Name="ItemName" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="ItemPrice" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="CategoryID_FK" Nullable="true" />
+  </ComplexType>
+</Schema>

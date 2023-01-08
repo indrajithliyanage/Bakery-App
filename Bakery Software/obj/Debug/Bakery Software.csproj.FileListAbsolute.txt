@@ -9,3 +9,8 @@ D:\Development Projects\C#\Bakery Software\Bakery Software\obj\Debug\Bakery Soft
 D:\Development Projects\C#\Bakery Software\Bakery Software\obj\Debug\Bakery Software.csproj.CoreCompileInputs.cache
 D:\Development Projects\C#\Bakery Software\Bakery Software\obj\Debug\Bakery Software.exe
 D:\Development Projects\C#\Bakery Software\Bakery Software\obj\Debug\Bakery Software.pdb
+D:\Development Projects\C#\Bakery Software\Bakery Software\bin\Debug\EntityFramework.dll
+D:\Development Projects\C#\Bakery Software\Bakery Software\bin\Debug\EntityFramework.SqlServer.dll
+D:\Development Projects\C#\Bakery Software\Bakery Software\bin\Debug\EntityFramework.xml
+D:\Development Projects\C#\Bakery Software\Bakery Software\bin\Debug\EntityFramework.SqlServer.xml
+D:\Development Projects\C#\Bakery Software\Bakery Software\obj\Debug\Bakery Software.csproj.CopyComplete
