@@ -108,6 +108,7 @@ namespace Bakery_Software
             {
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                 {
+                    numericUpDown4.Value = numericUpDown4.Value - Convert.ToDecimal(row.Cells[4].Value);
                     dataGridView1.Rows.RemoveAt(row.Index);
                 }
             }
