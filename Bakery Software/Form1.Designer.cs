@@ -43,10 +43,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
@@ -60,6 +56,11 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -236,6 +237,7 @@
             this.dataGridView1.ColumnHeadersHeight = 29;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
             this.Item,
             this.Price,
             this.Qty,
@@ -247,31 +249,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(558, 193);
             this.dataGridView1.TabIndex = 13;
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
-            // 
-            // Item
-            // 
-            this.Item.FillWeight = 300F;
-            this.Item.HeaderText = "Item";
-            this.Item.MinimumWidth = 6;
-            this.Item.Name = "Item";
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            // 
-            // Qty
-            // 
-            this.Qty.HeaderText = "Qty";
-            this.Qty.MinimumWidth = 6;
-            this.Qty.Name = "Qty";
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.MinimumWidth = 6;
-            this.Total.Name = "Total";
             // 
             // label5
             // 
@@ -309,6 +286,7 @@
             this.numericUpDown5.TabIndex = 17;
             this.numericUpDown5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDown5.ValueChanged += new System.EventHandler(this.numericUpDown5_ValueChanged);
+            this.numericUpDown5.Enter += new System.EventHandler(this.numericUpDown5_Enter);
             // 
             // label6
             // 
@@ -351,10 +329,16 @@
             this.numericUpDown7.DecimalPlaces = 2;
             this.numericUpDown7.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown7.Location = new System.Drawing.Point(463, 592);
+            this.numericUpDown7.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.numericUpDown7.Name = "numericUpDown7";
             this.numericUpDown7.Size = new System.Drawing.Size(108, 26);
             this.numericUpDown7.TabIndex = 21;
             this.numericUpDown7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown7.ValueChanged += new System.EventHandler(this.numericUpDown7_ValueChanged);
             // 
             // label8
             // 
@@ -372,6 +356,11 @@
             this.numericUpDown8.Enabled = false;
             this.numericUpDown8.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown8.Location = new System.Drawing.Point(464, 624);
+            this.numericUpDown8.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numericUpDown8.Name = "numericUpDown8";
             this.numericUpDown8.Size = new System.Drawing.Size(108, 26);
             this.numericUpDown8.TabIndex = 23;
@@ -420,6 +409,37 @@
             this.button5.TabIndex = 26;
             this.button5.Text = "Print";
             this.button5.UseVisualStyleBackColor = false;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // Item
+            // 
+            this.Item.FillWeight = 300F;
+            this.Item.HeaderText = "Item";
+            this.Item.MinimumWidth = 6;
+            this.Item.Name = "Item";
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            // 
+            // Qty
+            // 
+            this.Qty.HeaderText = "Qty";
+            this.Qty.MinimumWidth = 6;
+            this.Qty.Name = "Qty";
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.MinimumWidth = 6;
+            this.Total.Name = "Total";
             // 
             // Form1
             // 
@@ -503,6 +523,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;

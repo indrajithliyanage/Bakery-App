@@ -45,7 +45,7 @@ namespace Bakery_Software
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {            
+        {
             using (BakeryDBEntities db = new BakeryDBEntities())
             {
                 itemList = db.PopulateItems(null).ToList();
@@ -88,15 +88,23 @@ namespace Bakery_Software
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(comboBox1.SelectedIndex != 0 && numericUpDown1.Value != 0 && numericUpDown2.Value != 0 && numericUpDown3.Value != 0)
+            if (comboBox1.SelectedIndex != 0 && numericUpDown1.Value != 0 && numericUpDown2.Value != 0 && numericUpDown3.Value != 0)
             {
-                dataGridView1.Rows.Add(comboBox1.SelectedItem.ToString(),numericUpDown1.Value, numericUpDown2.Value, numericUpDown3.Value);
+                var item = itemList.FirstOrDefault(i => i.ItemName == comboBox1.SelectedItem.ToString());
+                if (item != null)
+                {
+                    dataGridView1.Rows.Add(item.ItemID, comboBox1.SelectedItem.ToString(), numericUpDown1.Value, numericUpDown2.Value, numericUpDown3.Value);
+                }
+                else
+                {
+                    MessageBox.Show("Something went Wrong! Couldn't get the Item ID");
+                }
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if(dataGridView1.SelectedRows.Count != 0)
+            if (dataGridView1.SelectedRows.Count != 0)
             {
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                 {
@@ -107,17 +115,16 @@ namespace Bakery_Software
             {
                 MessageBox.Show("Please Select a Row!");
             }
-            
         }
 
         private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            if(dataGridView1.Rows.Count != 0)
+            if (dataGridView1.Rows.Count != 0)
             {
                 decimal sum = 0.00M;
                 for (int i = 0; i < dataGridView1.Rows.Count; ++i)
                 {
-                    sum += Convert.ToDecimal(dataGridView1.Rows[i].Cells[3].Value);
+                    sum += Convert.ToDecimal(dataGridView1.Rows[i].Cells[4].Value);
                 }
                 numericUpDown4.Value = sum;
                 numericUpDown6.Value = numericUpDown4.Value - (numericUpDown4.Value * (numericUpDown5.Value / 100));
@@ -126,7 +133,23 @@ namespace Bakery_Software
 
         private void numericUpDown5_ValueChanged(object sender, EventArgs e)
         {
-            if(numericUpDown4.Value != 0.00M)
+            if (numericUpDown4.Value != 0.00M)
+            {
+                numericUpDown6.Value = numericUpDown4.Value - (numericUpDown4.Value * (numericUpDown5.Value / 100));
+            }
+        }
+
+        private void numericUpDown7_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDown7.Value > 0.00M && numericUpDown7.Value > numericUpDown6.Value)
+            {
+                numericUpDown8.Value = numericUpDown7.Value - numericUpDown6.Value;
+            }
+        }
+
+        private void numericUpDown5_Enter(object sender, EventArgs e)
+        {
+            if (numericUpDown4.Value != 0.00M)
             {
                 numericUpDown6.Value = numericUpDown4.Value - (numericUpDown4.Value * (numericUpDown5.Value / 100));
             }
