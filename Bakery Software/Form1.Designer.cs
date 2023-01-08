@@ -246,6 +246,7 @@
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(558, 193);
             this.dataGridView1.TabIndex = 13;
+            this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
             // 
             // Item
             // 
@@ -275,7 +276,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 550);
+            this.label5.Location = new System.Drawing.Point(12, 546);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 51);
             this.label5.TabIndex = 14;
@@ -285,8 +286,14 @@
             // numericUpDown4
             // 
             this.numericUpDown4.DecimalPlaces = 2;
+            this.numericUpDown4.Enabled = false;
             this.numericUpDown4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown4.Location = new System.Drawing.Point(72, 560);
+            this.numericUpDown4.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numericUpDown4.Name = "numericUpDown4";
             this.numericUpDown4.Size = new System.Drawing.Size(108, 26);
             this.numericUpDown4.TabIndex = 15;
@@ -301,23 +308,29 @@
             this.numericUpDown5.Size = new System.Drawing.Size(108, 26);
             this.numericUpDown5.TabIndex = 17;
             this.numericUpDown5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown5.ValueChanged += new System.EventHandler(this.numericUpDown5_ValueChanged);
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(195, 562);
+            this.label6.Location = new System.Drawing.Point(195, 552);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 19);
+            this.label6.Size = new System.Drawing.Size(45, 39);
             this.label6.TabIndex = 16;
-            this.label6.Text = "DISC";
+            this.label6.Text = "DISC(%)";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // numericUpDown6
             // 
             this.numericUpDown6.DecimalPlaces = 2;
+            this.numericUpDown6.Enabled = false;
             this.numericUpDown6.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown6.Location = new System.Drawing.Point(463, 560);
+            this.numericUpDown6.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.numericUpDown6.Name = "numericUpDown6";
             this.numericUpDown6.Size = new System.Drawing.Size(108, 26);
             this.numericUpDown6.TabIndex = 19;
@@ -356,6 +369,7 @@
             // numericUpDown8
             // 
             this.numericUpDown8.DecimalPlaces = 2;
+            this.numericUpDown8.Enabled = false;
             this.numericUpDown8.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown8.Location = new System.Drawing.Point(464, 624);
             this.numericUpDown8.Name = "numericUpDown8";

@@ -66,12 +66,14 @@ namespace Bakery_Software
                 if (item != null)
                 {
                     numericUpDown1.Value = item.ItemPrice;
+                    numericUpDown2.Value = 0;
+                    numericUpDown3.Value = 0.00M;
                 }
             }
             else
             {
                 numericUpDown1.Value = 0.00M;
-                numericUpDown2.Value = 0.00M;
+                numericUpDown2.Value = 0;
                 numericUpDown3.Value = 0.00M;
             }
         }
@@ -106,6 +108,28 @@ namespace Bakery_Software
                 MessageBox.Show("Please Select a Row!");
             }
             
+        }
+
+        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            if(dataGridView1.Rows.Count != 0)
+            {
+                decimal sum = 0.00M;
+                for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+                {
+                    sum += Convert.ToDecimal(dataGridView1.Rows[i].Cells[3].Value);
+                }
+                numericUpDown4.Value = sum;
+                numericUpDown6.Value = numericUpDown4.Value - (numericUpDown4.Value * (numericUpDown5.Value / 100));
+            }
+        }
+
+        private void numericUpDown5_ValueChanged(object sender, EventArgs e)
+        {
+            if(numericUpDown4.Value != 0.00M)
+            {
+                numericUpDown6.Value = numericUpDown4.Value - (numericUpDown4.Value * (numericUpDown5.Value / 100));
+            }
         }
     }
 }
