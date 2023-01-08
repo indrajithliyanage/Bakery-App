@@ -154,5 +154,27 @@ namespace Bakery_Software
                 numericUpDown6.Value = numericUpDown4.Value - (numericUpDown4.Value * (numericUpDown5.Value / 100));
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+            radioButton1.ForeColor = Control.DefaultForeColor;
+            radioButton2.ForeColor = Control.DefaultForeColor;
+            comboBox1.Items.Clear();
+            comboBox1.Items.Add("Please Select");
+            comboBox1.SelectedIndex = 0;
+            foreach (var item in itemList)
+            {
+                comboBox1.Items.Add(item.ItemName);
+            }
+            comboBox1.SelectedIndex = 0;
+            dataGridView1.Rows.Clear();
+            numericUpDown4.Value = 0.00M;
+            numericUpDown5.Value = 0.00M;
+            numericUpDown6.Value = 0.00M;
+            numericUpDown7.Value = 0.00M;
+            numericUpDown8.Value = 0.00M;
+        }
     }
 }
