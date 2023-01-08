@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -44,7 +45,7 @@ namespace Bakery_Software
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
+        {            
             using (BakeryDBEntities db = new BakeryDBEntities())
             {
                 itemList = db.PopulateItems(null).ToList();
@@ -81,6 +82,30 @@ namespace Bakery_Software
             {
                 numericUpDown3.Value = numericUpDown1.Value * numericUpDown2.Value;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(comboBox1.SelectedIndex != 0 && numericUpDown1.Value != 0 && numericUpDown2.Value != 0 && numericUpDown3.Value != 0)
+            {
+                dataGridView1.Rows.Add(comboBox1.SelectedItem.ToString(),numericUpDown1.Value, numericUpDown2.Value, numericUpDown3.Value);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(dataGridView1.SelectedRows.Count != 0)
+            {
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    dataGridView1.Rows.RemoveAt(row.Index);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please Select a Row!");
+            }
+            
         }
     }
 }

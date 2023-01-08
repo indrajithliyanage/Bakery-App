@@ -210,6 +210,7 @@
             this.button1.TabIndex = 11;
             this.button1.Text = "Add Item";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -221,6 +222,7 @@
             this.button2.TabIndex = 12;
             this.button2.Text = "Remove Item";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // dataGridView1
             // 
@@ -272,13 +274,13 @@
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 562);
+            this.label5.Location = new System.Drawing.Point(12, 550);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 19);
+            this.label5.Size = new System.Drawing.Size(54, 51);
             this.label5.TabIndex = 14;
-            this.label5.Text = "Price";
+            this.label5.Text = "Sub Total";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // numericUpDown4
             // 
@@ -304,11 +306,12 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(186, 562);
+            this.label6.Location = new System.Drawing.Point(195, 562);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(54, 19);
+            this.label6.Size = new System.Drawing.Size(45, 19);
             this.label6.TabIndex = 16;
-            this.label6.Text = "Price";
+            this.label6.Text = "DISC";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // numericUpDown6
             // 
