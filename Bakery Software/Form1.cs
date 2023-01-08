@@ -16,5 +16,17 @@ namespace Bakery_Software
         {
             InitializeComponent();
         }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            radioButton1.ForeColor = Color.Green;
+            radioButton2.ForeColor = Control.DefaultForeColor;
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            radioButton2.ForeColor = Color.Green;
+            radioButton1.ForeColor = Control.DefaultForeColor;
+        }
     }
 }
