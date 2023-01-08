@@ -1,0 +1,11 @@
+D:\Development Projects\C#\Bakery Software\Bakery Software\bin\Debug\Bakery Software.exe.config
+D:\Development Projects\C#\Bakery Software\Bakery Software\bin\Debug\Bakery Software.exe
+D:\Development Projects\C#\Bakery Software\Bakery Software\bin\Debug\Bakery Software.pdb
+D:\Development Projects\C#\Bakery Software\Bakery Software\obj\Debug\Bakery Software.csproj.AssemblyReference.cache
+D:\Development Projects\C#\Bakery Software\Bakery Software\obj\Debug\Bakery Software.csproj.SuggestedBindingRedirects.cache
+D:\Development Projects\C#\Bakery Software\Bakery Software\obj\Debug\Bakery_Software.Form1.resources
+D:\Development Projects\C#\Bakery Software\Bakery Software\obj\Debug\Bakery_Software.Properties.Resources.resources
+D:\Development Projects\C#\Bakery Software\Bakery Software\obj\Debug\Bakery Software.csproj.GenerateResource.cache
+D:\Development Projects\C#\Bakery Software\Bakery Software\obj\Debug\Bakery Software.csproj.CoreCompileInputs.cache
+D:\Development Projects\C#\Bakery Software\Bakery Software\obj\Debug\Bakery Software.exe
+D:\Development Projects\C#\Bakery Software\Bakery Software\obj\Debug\Bakery Software.pdb
